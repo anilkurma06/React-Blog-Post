@@ -1,0 +1,26 @@
+/* components/BlogPostItem/BlogPostItem.module.css */
+.blogPostItem {
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  text-decoration: none;
+  color: #333333;
+}
+
+.title:hover {
+  color: #007bff;
+}
+
+.summary {
+  font-size: 16px;
+  color: #666666;
+}
+
+.date {
+  font-size: 14px;
+  color: #999999;
+}

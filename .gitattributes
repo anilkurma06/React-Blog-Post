@@ -1,0 +1,21 @@
+# Automatically detect text files and normalize line endings to LF in the repository
+* text=auto
+
+# Force LF line endings for common text-based files
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.sh text eol=lf
+
+# Force CRLF line endings for Windows-specific files (e.g., batch scripts)
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Treat images as binary files (do not alter line endings)
+*.png binary
+*.jpg binary
+*.gif binary
+
+# Force LF for eslint config file (to maintain consistency)
+eslint.config.js text eol=lf
