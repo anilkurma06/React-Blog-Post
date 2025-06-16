@@ -43,6 +43,12 @@ function App() {
     setShowForm(true);
   };
 
+  const handleDelete = (id) => {
+    setPosts((prev) => prev.filter((p) => p.id !== id));
+    setShowForm(false);
+    setEditingPost(null);
+  };
+
   const handleFormSubmit = (formData) => {
     if (editingPost) {
       setPosts((prev) => prev.map((p) => (p.id === editingPost.id ? { ...p, ...formData } : p)));
@@ -68,7 +74,7 @@ function App() {
       {showForm && (
         <BlogPostForm post={editingPost} onSubmit={handleFormSubmit} />
       )}
-      <BlogPostList posts={posts} />
+      <BlogPostList posts={posts} onDelete={handleDelete} />
       <Routes>
         <Route path="/posts/:id" element={<p>Post Content Placeholder</p>} />
       </Routes>
