@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './BlogPostItem.module.css';
 
-const BlogPostItem = ({ title, summary, date, url }) => {
+const BlogPostItem = ({ id, title, summary, date, url, onDelete }) => {
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -16,6 +16,22 @@ const BlogPostItem = ({ title, summary, date, url }) => {
       </Link>
       <p className={styles.summary}>{summary}</p>
       <p className={styles.date}>Published on {formattedDate}</p>
+      {onDelete && (
+        <button
+          onClick={() => onDelete(id)}
+          style={{
+            marginTop: 12,
+            background: '#ff0000',
+            color: '#fff',
+            border: 'none',
+            borderRadius: 4,
+            padding: '6px 18px',
+            cursor: 'pointer'
+          }}
+        >
+          Delete
+        </button>
+      )}
     </div>
   );
 };
