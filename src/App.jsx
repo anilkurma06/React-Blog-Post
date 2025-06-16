@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import BlogPostList from './components/BlogPostList';
+import BlogPostForm from '../components/BlogPostForm';
 
 const samplePosts = [
   {
@@ -27,10 +28,47 @@ const samplePosts = [
 ];
 
 function App() {
+  const [posts, setPosts] = React.useState(samplePosts);
+  const [editingPost, setEditingPost] = React.useState(null);
+  const [showForm, setShowForm] = React.useState(false);
+
+  const handleCreate = () => {
+    setEditingPost(null);
+    setShowForm(true);
+  };
+
+  const handleEdit = (id) => {
+    const post = posts.find((p) => p.id === id);
+    setEditingPost(post);
+    setShowForm(true);
+  };
+
+  const handleFormSubmit = (formData) => {
+    if (editingPost) {
+      setPosts((prev) => prev.map((p) => (p.id === editingPost.id ? { ...p, ...formData } : p)));
+    } else {
+      setPosts((prev) => [
+        ...prev,
+        {
+          ...formData,
+          id: (prev.length + 1).toString(),
+          summary: formData.content.slice(0, 60) + '...',
+          url: `/posts/${prev.length + 1}`,
+        },
+      ]);
+    }
+    setShowForm(false);
+    setEditingPost(null);
+  };
+
   return (
     <>
       <h1>Blog Posts</h1>
-      <BlogPostList posts={samplePosts} />
+      <button onClick={handleCreate} style={{ marginBottom: 24 }}>New Post</button>
+      {showForm && (
+        <BlogPostForm post={editingPost} onSubmit={handleFormSubmit} />
+      )}
+      <BlogPostList posts={posts} />
       <Routes>
         <Route path="/posts/:id" element={<p>Post Content Placeholder</p>} />
       </Routes>
