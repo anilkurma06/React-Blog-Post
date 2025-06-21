@@ -1,4 +1,3 @@
-
 import BlogPostItem from './BlogPostItem';
 import styles from './BlogPostList.module.css';
 
