@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import BlogPostList from './components/BlogPostList';
 import BlogPostForm from '../components/BlogPostForm';
+import Layout from './components/Layout';
 
 const samplePosts = [
   {
@@ -68,7 +69,7 @@ function App() {
   };
 
   return (
-    <>
+    <Layout>
       <h1>Blog Posts</h1>
       <button onClick={handleCreate} style={{ marginBottom: 24 }}>New Post</button>
       {showForm && (
@@ -78,7 +79,7 @@ function App() {
       <Routes>
         <Route path="/posts/:id" element={<p>Post Content Placeholder</p>} />
       </Routes>
-    </>
+    </Layout>
   );
 }
 
