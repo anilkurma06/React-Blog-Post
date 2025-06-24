@@ -1,0 +1,39 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Roboto, sans-serif;
+}
+header {
+  width: 100%;
+  height: 60px;
+}
+.main {
+  flex: 1 0 auto;
+  max-width: 1200px;
+  margin: 80px auto 0 auto;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.footer {
+  background: #003366;
+  color: #fff;
+  text-align: center;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .main {
+    padding: 10px;
+    margin-top: 70px;
+  }
+  .footer {
+    font-size: 14px;
+    height: 40px;
+  }
+}
