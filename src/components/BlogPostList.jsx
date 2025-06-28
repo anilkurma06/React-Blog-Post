@@ -1,4 +1,3 @@
-
 import BlogPostItem from './BlogPostItem';
 import styles from './BlogPostList.module.css';
 
@@ -16,6 +15,9 @@ const BlogPostList = ({ posts }) => {
           summary={post.summary}
           date={post.date}
           url={post.url}
+          comments={post.comments || []}
+          isLoggedIn={post.isLoggedIn || false}
+          userName={post.userName || ''}
         />
       ))}
     </div>

@@ -1,0 +1,8 @@
+.commentList {
+  margin-bottom: 16px;
+}
+.empty {
+  color: #888;
+  font-style: italic;
+  margin: 8px 0;
+}
