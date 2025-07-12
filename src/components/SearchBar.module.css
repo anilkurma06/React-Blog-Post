@@ -1,0 +1,36 @@
+.searchBar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.label {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+
+.input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  transition: border 0.2s;
+}
+
+.input:focus {
+  border: 1.5px solid #007bff;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .searchBar {
+    margin-bottom: 16px;
+  }
+  .input {
+    font-size: 15px;
+    padding: 8px 10px;
+  }
+}

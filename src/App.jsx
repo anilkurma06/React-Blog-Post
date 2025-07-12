@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchBar from './components/SearchBar';
 import { Routes, Route } from 'react-router-dom';
 import BlogPostList from './components/BlogPostList';
 import BlogPostForm from '../components/BlogPostForm';
@@ -30,6 +31,7 @@ const samplePosts = [
 
 function App() {
   const [posts, setPosts] = React.useState(samplePosts);
+  const [search, setSearch] = React.useState("");
   const [editingPost, setEditingPost] = React.useState(null);
   const [showForm, setShowForm] = React.useState(false);
 
@@ -72,10 +74,21 @@ function App() {
     <Layout>
       <h1>Blog Posts</h1>
       <button onClick={handleCreate} style={{ marginBottom: 24 }}>New Post</button>
+      <SearchBar
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+      />
       {showForm && (
         <BlogPostForm post={editingPost} onSubmit={handleFormSubmit} />
       )}
-      <BlogPostList posts={posts} onDelete={handleDelete} />
+      <BlogPostList
+        posts={posts.filter(
+          post =>
+            post.title.toLowerCase().includes(search.toLowerCase()) ||
+            post.summary.toLowerCase().includes(search.toLowerCase())
+        )}
+        onDelete={handleDelete}
+      />
       <Routes>
         <Route path="/posts/:id" element={<p>Post Content Placeholder</p>} />
       </Routes>
